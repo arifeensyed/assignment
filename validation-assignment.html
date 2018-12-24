@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+   
+    <title>Validation</title>
+</head>
+<body>
+    <div class="container d-flex align-items-center justify-content-center" style="height:650px">
+        <div class=" justify-content-center rounded w-50" style="background-color:rgba(0, 0, 0, 0.1);">
+        	<div class="d-flex flex-column justify-content-center">
+        		<div class="mx-auto m-3">
+        			Enter 1st Value:
+        			<input class="ml-2" type="text" onkeyup="valid1()" id="in1">
+                    <p id="p1"></p>
+        		</div>
+        		<div class="m-3 mx-auto">
+        			Enter 2nd Value:
+        			<input class="ml-2" onkeyup="valid2()" type="text" id="in2">
+                    <p id="p2"></p>
+        		      
+                </div>
+        		<div class="m-3  mx-auto">
+        			<button type="button"  id="btnAdd"onclick="addition()" class="btn btn-secondary  mr-3" style="width: 100px" disabled>Add</button>
+        			<button type="button" id="btnSub" onclick="subtraction()" class="btn btn-secondary " style="width: 100px" disabled>Subtract</button>
+        		</div>
+        	</div>
+            
+
+        </div>
+    </div>
+ <script type="text/javascript">
+       function valid1(){
+        var in1=document.querySelector("#in1");
+        var in2=document.querySelector("#in2");
+        var btnAdd=document.querySelector("#btnAdd");
+        var btnSub=document.querySelector("#btnSub");
+        var num = /^[0-9]+$/;
+        
+        if(in1.value.match(num)){
+            document.querySelector("#p1").innerHTML="";
+            in1.style.borderColor="initial";
+
+        }else{
+            document.querySelector("#p1").innerHTML="Enter Numbers only";
+            in1.style.borderColor="red";
+            btnAdd.disabled=true;
+            btnSub.disabled=true;
+        }
+        if(in1.value!="" && in2.value!=""){
+            btnAdd.disabled=false;
+            btnSub.disabled=false;
+        }
+        
+       }
+       function valid2(){
+        var in1=document.querySelector("#in1");
+        var in2=document.querySelector("#in2");
+        var btnAdd=document.querySelector("#btnAdd");
+        var btnSub=document.querySelector("#btnSub");
+        var num = /^[0-9]+$/;
+        if(in2.value.match(num)){
+           document.querySelector("#p2").innerHTML="";
+            in2.style.borderColor="initial";
+        }else{
+            document.querySelector("#p2").innerHTML="Enter Numbers only";
+            in2.style.borderColor="red";
+            btnAdd.disabled=true;
+            btnSub.disabled=true;
+        }
+        if(in1.value!="" && in2.value!=""){
+            btnAdd.disabled=false;
+            btnSub.disabled=false;
+        }
+       }
+    function addition(){
+        var a=parseInt(document.querySelector('#in1').value);
+        var b=parseInt(document.querySelector('#in2').value);
+        var c=a+b;
+        alert("Addition result: " + c);
+        
+        }
+     function subtraction(){
+        var a=parseInt(document.querySelector('#in1').value);
+        var b=parseInt(document.querySelector('#in2').value);
+        var c=a-b;
+        alert("Subtraction result: " + c);
+        }
+</script>
+</body>
+</html>
